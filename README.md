@@ -1,6 +1,6 @@
 ####pita-python
 ===========
-Original notes file, orignotes.txt.
+Original notes file, setup_notes.txt.
 
 Streamlined process followed this time was efficient and effective. Kenneth Reitz' hitchhiker's guide [Windows setup](http://docs.python-guide.org/en/latest/starting/install/win/) is the way to go.
 

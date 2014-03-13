@@ -1,0 +1,30 @@
+It became necessary to reinstall several python libraries after updating ArcGIS to version 10.2. BeautifulSoup requires easy_install/pip to add extra parsers (specifically lxml).
+
+Python 2.7 reinstalled with the update to ArcGIS 10.2 into C:\Python27\ArcGIS10.2, first changed environment variable to new directory.
+
+Both pip and easy_install were installed in C:\Python27\ArcGIS10.1\Scripts and could not be used after 10.2 update
+
+Initial attempt to update easy_install by running 'python ez_setup.py install' from C:\Python27 worked fine but then trying the same (i.e. 'python get-pip.py install' tripped up.
+
+Returned to original downloaded files from August 2013. Re-ran executables but returned errors 'Could not find Pyton 2.7 in registry'. Downloaded registry file (C:\Python27\python27patch_x64.reg) but did not fix issue. Ran pip executable for 32-bit and Python 2.7 registry found. Seemed to install fine, however, cannot run pip commands.
+
+Updated environment variable for 'Scripts' to 10.2 directory. Then attempted to install pip using easy_install with 'easy_install pip', worked successfully as pip command successfully downloaded and found lxml. Received the following error, 'Unable to find vcvarsall.bat', which occurred last time this whole process was attempted.
+
+Had installed MinGW to circumvent MS Visual Studio compiler and had created distutils.cfg file in previous workaround for 10.1. See this page for instructions, https://gist.github.com/pcdinh/2391902. No luck after copying distutils.cfg file into 10.2 directory.
+
+Run executable, lxml-3.2.3.win32-py2.7.exe to install lxml. Downloaded from http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml.
+
+Success!
+
+UPDATE 3/12/14
+
+Another ArcGIS update following Windows 8 update...
+
+Python paths removed from environment variables. with the intention of using virutalenv this time, downloaded a fresh copy of Python (v 2.7.6) and added to a new directory withing Python27 directory. New version sits in C:\Python27\Python276. Added this directory and C:\Python27\Python276\Scripts to PATH variable.
+
+Followed process layed out in Kenneth Reitz' Hitch hiker's guide (http://docs.python-guide.org/en/latest/starting/install/win/) to install setuptools and pip. Very easy.
+
+Easy to pip install beautifulsoup4 into virtual env but still need lxml parser library and pip install lxml does not do the trick (although it does successfully install the library...).
+	- Downloaded newest version of lxml (3.3.3) in executable form. Run installer and setup requires installation of Python selected from list. Two installations found in registry (python in Arc directory and python in Python276 directory). Want to install into virtual environment specific to this project.
+	-answer resides here (http://stackoverflow.com/questions/3271590/can-i-install-python-windows-packages-into-virtualenvs, link in top answer (http://stackoverflow.com/questions/5382801/where-can-i-download-binary-eggs-with-psycopg2-for-windows provides a little more detail))
+	-run easy_install whatever.exe while in the virtual environment and the library is added into the virtual environment
