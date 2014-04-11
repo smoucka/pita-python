@@ -14,4 +14,8 @@ In this case I also needed [BeautifulSoup](http://www.crummy.com/software/Beauti
 
 Ran "easy_install whatever.exe" while in the virtual environment.
 
+04-11-2014
+
 Encountered this issue previously when trying to install lxml. When attempting to pip install matplotlib and numpy, received error: "Unable to find vcvarsall.bat". Previously solved by running executable in virtualenv as mentioned above. Worked fine with matplotlib but numpy file downloaded from [numpy.org](http://www.numpy.org/) returned the error, "not a valid Windows .exe". Package downloaded [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) installed successfully. Used win32 version for Python 2.7. Initially tried amd64 without any luck.
+
+Tried to create a simple plot and received the following error message after a long traceback, "This probably means that Tcl wasn't installed properly.". [This link](https://github.com/pypa/virtualenv/issues/93) has the answer. Tcl does get copied into virtualenvs. Just need to copy the 'tcl' directory from main Python directory into root folder of virtualenv.
